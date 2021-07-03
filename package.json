@@ -1,0 +1,11 @@
+{
+    "name": "Sampleproject",
+    "description": "This is a sample project",
+    "scripts": {
+        "start": "node App.js"
+    },
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "express": "^4.17.1"
+    }
+}
