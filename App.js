@@ -1,12 +1,16 @@
 // Express
 const express = require("express");
 const bodyparser = require("body-parser");
+const multer = require("multer");
+const { auth } = require("./middleware/auth");
+const upload = multer({dest: './uploads'})
 
 const app = express();
 /**
  * below express v4 use - < app.use(bodyparser()) > 
  */
 app.use(bodyparser.json());
+
 
 const PORT = 3001;
 
@@ -50,6 +54,20 @@ app.post('/postv1', (req, res) => {
             message: "Enter all mandatory fileds"
         })
     }
+})
+
+/**
+ * File Uploading using multer
+ * 'image' is the key you keep in request
+ */
+app.post('/save/file', upload.single('image'), (req, res) => {
+    res.send(req.file);
+});
+
+app.post('/isSecure', auth, (req, res) => {
+    res.status(200).json({
+        success: true
+    })
 })
 
 app.listen(PORT, () => {
