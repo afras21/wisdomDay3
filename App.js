@@ -83,7 +83,7 @@ app.post('/isSecure', auth, (req, res) => {
     })
 })
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT || PORT, () => {
     // console.log('App is running', PORT);
        console.log(`App is running ${PORT}`)
 })
