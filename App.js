@@ -12,7 +12,7 @@ const app = express();
 app.use(bodyparser.json());
 
 
-const PORT = 3001;
+const PORT = 3000;
 
 /**
  * Empty route
@@ -59,9 +59,22 @@ app.post('/postv1', (req, res) => {
 /**
  * File Uploading using multer
  * 'image' is the key you keep in request
+ * upload.array for multiple
  */
 app.post('/save/file', upload.single('image'), (req, res) => {
     res.send(req.file);
+});
+
+/**
+ * Multiple upload
+ */
+app.post('/bulk', upload.array('images', 4) , (req, res) =>{
+    try {
+        res.send(req.files);
+    } catch(error) {
+          console.log(error);
+           res.send(400);
+    }
 });
 
 app.post('/isSecure', auth, (req, res) => {
