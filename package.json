@@ -2,10 +2,14 @@
     "name": "Sampleproject",
     "description": "This is a sample project",
     "scripts": {
-        "start": "node App.js"
+        "start": "nodemon App.js"
     },
     "dependencies": {
         "body-parser": "^1.19.0",
-        "express": "^4.17.1"
+        "cors": "^2.8.5",
+        "express": "^4.17.1",
+        "multer": "^1.4.2",
+        "nodemon": "^2.0.9",
+        "pm2": "^5.1.0"
     }
 }
